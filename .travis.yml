@@ -1,0 +1,12 @@
+language: node_js
+sudo: required
+node_js:
+- '10'
+install:
+- yarn install
+jobs:
+  include:
+  - stage: Test
+    script: yarn test && npx codecov
+  - stage: Build
+    script: yarn build

@@ -2,6 +2,7 @@
   "name": "xml-builder-ui",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://project-openubl.github.io/xml-builder-ui/",
   "dependencies": {
     "@patternfly/patternfly": "^2.43.1",
     "@patternfly/react-core": "^3.120.8",

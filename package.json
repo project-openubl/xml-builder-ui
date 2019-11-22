@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@patternfly/patternfly": "^2.43.1",
+    "@patternfly/react-core": "^3.120.8",
     "@types/jest": "24.0.23",
     "@types/node": "12.12.11",
     "@types/react": "16.9.12",
     "@types/react-dom": "16.9.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "typescript": "3.7.2"
   },
@@ -32,5 +35,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.1.2",
+    "node-sass": "^4.13.0"
   }
 }

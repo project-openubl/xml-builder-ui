@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/project-openubl/xaml-builder-ui.svg?branch=master)](https://travis-ci.org/project-openubl/xaml-builder-ui)
-[![codecov](https://codecov.io/gh/project-openubl/xaml-builder-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/project-openubl/xaml-builder-ui)
+[![Build Status](https://travis-ci.org/project-openubl/xml-builder-ui.svg?branch=master)](https://travis-ci.org/project-openubl/xml-builder-ui)
+[![codecov](https://codecov.io/gh/project-openubl/xml-builder-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/project-openubl/xml-builder-ui)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

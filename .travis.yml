@@ -1,12 +1,22 @@
 language: node_js
 sudo: required
 node_js:
-- '10'
+- 'stable'
 install:
 - yarn install
 jobs:
   include:
   - stage: Test
-    script: yarn test && npx codecov
-  - stage: Build
-    script: yarn build
+    script:
+      - yarn test && npx codecov
+  - stage: GithubPage
+    script:
+      - yarn build
+    deploy:
+      provider: pages
+      skip_cleanup: true
+      github_token: $GITHUB_TOKEN
+      keep_history: true
+      local_dir: build
+      on:
+        branch: master

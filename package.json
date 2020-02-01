@@ -5,16 +5,20 @@
   "homepage": "https://project-openubl.github.io/xml-builder-ui/",
   "dependencies": {
     "@patternfly/patternfly": "^2.43.1",
-    "@patternfly/react-core": "^3.120.8",
+    "@patternfly/react-core": "3.124.1",
+    "@patternfly/react-inline-edit-extension": "2.13.9",
+    "@patternfly/react-table": "2.24.41",
     "@types/jest": "24.0.23",
     "@types/node": "12.12.11",
     "@types/react": "16.9.12",
     "@types/react-dom": "16.9.4",
+    "formik": "^2.0.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "typescript": "3.7.2"
+    "typescript": "3.7.2",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,6 +43,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.2",
+    "@types/yup": "^0.26.24",
     "node-sass": "^4.13.0"
   }
 }

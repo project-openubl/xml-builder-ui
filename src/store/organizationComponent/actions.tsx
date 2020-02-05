@@ -3,10 +3,10 @@ import { Dispatch } from "redux";
 import { createAction } from "typesafe-actions";
 import { ComponentRepresentation } from "../../models/xml-builder";
 import {
-  getComponent,
-  createComponent,
-  updateComponent,
-  deleteComponent
+  getOrganizationComponent,
+  createOrganizationComponent,
+  updateOrganizationComponent,
+  deleteOrganizationComponent
 } from "../../api/organizations";
 import { alert, alertFetchEndpoint } from "../alert/actions";
 
@@ -75,7 +75,7 @@ export const fetchComponent = (organizationId: string, componentId: string) => {
 
     dispatch(fetchComponentRequest(meta));
 
-    return getComponent(organizationId, componentId)
+    return getOrganizationComponent(organizationId, componentId)
       .then((res: AxiosResponse<ComponentRepresentation>) => {
         dispatch(fetchComponentSuccess(res.data, meta));
       })
@@ -96,7 +96,7 @@ export const requestCreateComponent = (
     };
 
     dispatch(createComponentRequest(meta));
-    return createComponent(organizationId, component)
+    return createOrganizationComponent(organizationId, component)
       .then((res: AxiosResponse<ComponentRepresentation>) => {
         dispatch(createComponentSuccess(res.data, meta));
         alert({
@@ -123,7 +123,7 @@ export const requestUpdateComponent = (
     };
 
     dispatch(updateComponentRequest(meta));
-    return updateComponent(organizationId, component)
+    return updateOrganizationComponent(organizationId, component)
       .then((res: AxiosResponse<ComponentRepresentation>) => {
         dispatch(updateComponentSuccess(res.data, meta));
         alert({
@@ -150,7 +150,7 @@ export const requestDeleteComponent = (
     };
 
     dispatch(deleteComponentRequest(meta));
-    return deleteComponent(organizationId, componentId)
+    return deleteOrganizationComponent(organizationId, componentId)
       .then((res: AxiosResponse) => {
         dispatch(deleteComponentSuccess(res.data, meta));
         alert({

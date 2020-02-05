@@ -1,81 +1,59 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { Dispatch } from "redux";
 import { createAction } from "typesafe-actions";
-import { enrichDocument, createDocument } from "../../api/organizations";
+import { enrichDocument, createDocument } from "../../api/documents";
 import { alertFetchEndpoint } from "../alert/actions";
 import { DocumentType } from "../../models/xml-builder";
 
-interface OrganizationComponentActionMeta {
-  organizationId: string;
-}
-
-interface ComponentItemActionMeta extends OrganizationComponentActionMeta {
-  componentId: string;
-}
-
 export const createEnrichDocumentRequest = createAction(
   "document/enrich/request"
-)<OrganizationComponentActionMeta>();
+)();
 export const createEnrichDocumentSuccess = createAction(
   "document/enrich/success"
-)<any, OrganizationComponentActionMeta>();
+)<any>();
 export const createEnrichDocumentFailure = createAction(
   "document/enrich/failure"
-)<AxiosError, OrganizationComponentActionMeta>();
+)<AxiosError>();
 
-export const createDocumentRequest = createAction("document/create/request")<
-  OrganizationComponentActionMeta
->();
+export const createDocumentRequest = createAction("document/create/request")();
 export const createDocumentSuccess = createAction("document/create/success")<
-  any,
-  OrganizationComponentActionMeta
+  any
 >();
 export const createDocumentFailure = createAction("document/create/failure")<
-  AxiosError,
-  OrganizationComponentActionMeta
+  AxiosError
 >();
 
 export const requestEnrichDocument = (
-  organizationId: string,
   documentType: DocumentType,
   document: any
 ) => {
   return (dispatch: Dispatch) => {
-    const meta: OrganizationComponentActionMeta = {
-      organizationId: organizationId
-    };
-
-    dispatch(createEnrichDocumentRequest(meta));
-    return enrichDocument(organizationId, documentType, document)
+    dispatch(createEnrichDocumentRequest());
+    return enrichDocument(documentType, document)
       .then((res: AxiosResponse<any>) => {
-        dispatch(createEnrichDocumentSuccess(res.data, meta));
+        dispatch(createEnrichDocumentSuccess(res.data));
         return res.data;
       })
       .catch((err: AxiosError) => {
-        dispatch(createEnrichDocumentFailure(err, meta));
+        dispatch(createEnrichDocumentFailure(err));
         alertFetchEndpoint(err)(dispatch);
       });
   };
 };
 
 export const requestCreateDocument = (
-  organizationId: string,
   documentType: DocumentType,
   document: any
 ) => {
   return (dispatch: Dispatch) => {
-    const meta: OrganizationComponentActionMeta = {
-      organizationId: organizationId
-    };
-
-    dispatch(createDocumentRequest(meta));
-    return createDocument(organizationId, documentType, document)
+    dispatch(createDocumentRequest());
+    return createDocument(documentType, document)
       .then((res: AxiosResponse<any>) => {
-        dispatch(createDocumentSuccess(res.data, meta));
+        dispatch(createDocumentSuccess(res.data));
         return res;
       })
       .catch((err: AxiosError) => {
-        dispatch(createDocumentFailure(err, meta));
+        dispatch(createDocumentFailure(err));
         alertFetchEndpoint(err)(dispatch);
       });
   };

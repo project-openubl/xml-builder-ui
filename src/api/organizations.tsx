@@ -22,7 +22,7 @@ const ORGANIZATION_ENRICH_DOCUMENTS_URL =
 const ORGANIZATION_CREATE_DOCUMENTS_URL =
   "/organizations/{organizationId}/documents/{documentType}/create";
 
-export const search = (
+export const searchOrganizations = (
   filterText: string,
   page: number,
   pageSize: number
@@ -46,24 +46,26 @@ export const search = (
   );
 };
 
-export const getAll = (): AxiosPromise<OrganizationRepresentation[]> => {
+export const getAllOrganizations = (): AxiosPromise<OrganizationRepresentation[]> => {
   return ApiClient.get<OrganizationRepresentation[]>(ALL_ORGANIZATIONS_URL);
 };
 
-export const create = (organization: OrganizationRepresentation) => {
+export const createOrganization = (
+  organization: OrganizationRepresentation
+) => {
   return ApiClient.post<OrganizationRepresentation>(
     ORGANIZATIONS_URL,
     organization
   );
 };
 
-export const getById = (organizationId: string) => {
+export const getOrganizationById = (organizationId: string) => {
   return ApiClient.get<OrganizationRepresentation>(
     `${ORGANIZATIONS_URL}/${organizationId}`
   );
 };
 
-export const update = (
+export const updateOrganization = (
   organizationId: string,
   organization: OrganizationRepresentation
 ) => {
@@ -73,11 +75,13 @@ export const update = (
   );
 };
 
-export const remove = (organizationId: string) => {
+export const removeOrganization = (organizationId: string) => {
   return ApiClient.delete(`${ORGANIZATIONS_URL}/${organizationId}`);
 };
 
-export const getIdByName = (name: string): AxiosPromise<string | null> => {
+export const getOrganizationIdByName = (
+  name: string
+): AxiosPromise<string | null> => {
   return ApiClient.get(GET_ID_BY_NAME_URL + "/" + encodeURIComponent(name));
 };
 
@@ -97,7 +101,7 @@ export const getOrganizationComponents = (
   );
 };
 
-export const getComponent = (
+export const getOrganizationComponent = (
   organizationId: string,
   componentId: string
 ): AxiosPromise<ComponentRepresentation> => {
@@ -109,7 +113,7 @@ export const getComponent = (
   );
 };
 
-export const createComponent = (
+export const createOrganizationComponent = (
   organizationId: string,
   component: ComponentRepresentation
 ): AxiosPromise<ComponentRepresentation> => {
@@ -119,7 +123,7 @@ export const createComponent = (
   );
 };
 
-export const updateComponent = (
+export const updateOrganizationComponent = (
   organizationId: string,
   component: ComponentRepresentation
 ): AxiosPromise<ComponentRepresentation> => {
@@ -132,7 +136,7 @@ export const updateComponent = (
   );
 };
 
-export const deleteComponent = (
+export const deleteOrganizationComponent = (
   organizationId: string,
   componentId: string
 ): AxiosPromise => {
@@ -144,7 +148,7 @@ export const deleteComponent = (
   );
 };
 
-export const enrichDocument = (
+export const enrichOrganizationDocument = (
   organizationId: string,
   documentType: DocumentType,
   document: any
@@ -158,7 +162,7 @@ export const enrichDocument = (
   );
 };
 
-export const createDocument = (
+export const createOrganizationDocument = (
   organizationId: string,
   documentType: DocumentType,
   document: any

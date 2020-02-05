@@ -8,30 +8,59 @@ import KeysPage from "./Pages/KeysPage";
 import OrganizationListPage from "./Pages/OrganizationListPage";
 import OrganizationPage from "./Pages/OrganizationPage";
 import DocumentsPage from "./Pages/DocumentsPage";
+import { isAppInSignerMode } from "./Utilities/EnvUtils";
+
+const XmlBuilderRoute = (params: any) => {
+  const { component: Component, forSignerMode, ...rest } = params;
+  if (isAppInSignerMode() === forSignerMode) {
+    return <Route {...rest} component={Component} />;
+  }
+  return null;
+};
 
 export const AppRoutes = () => {
   return (
     <Switch>
       <Route path="/home" component={HomePage} />
-      <Route path="/organizations/list" component={OrganizationListPage} />
-      <Route path="/organizations/create" component={OrganizationPage} />
-      <Route
+
+      <XmlBuilderRoute
+        path="/documents/create"
+        component={DocumentsPage}
+        exact
+        forSignerMode={false}
+      />
+
+      <XmlBuilderRoute
+        path="/organizations/list"
+        component={OrganizationListPage}
+        forSignerMode={true}
+      />
+      <XmlBuilderRoute
+        path="/organizations/create"
+        component={OrganizationPage}
+        forSignerMode={true}
+      />
+      <XmlBuilderRoute
         path="/organizations/edit/:organizationId"
         component={OrganizationPage}
+        forSignerMode={true}
       />
-      <Route
+      <XmlBuilderRoute
         path="/organizations/manage/:organizationId/keys"
         component={KeysPage}
+        forSignerMode={true}
       />
-      <Route
+      <XmlBuilderRoute
         path="/organizations/documents/:organizationId/create"
         component={DocumentsPage}
+        forSignerMode={true}
       />
+
       <Route path="/error/403" component={NotFound403} />
       <Route path="/error/404" component={NotFound404} />
       <Route path="/error/503" component={ServiceUnavailable503} />
 
-      <Route path="/" render={() => <Redirect to={"/organizations/list"} />} />
+      <Route path="/" render={() => <Redirect to={"/home"} />} />
     </Switch>
   );
 };

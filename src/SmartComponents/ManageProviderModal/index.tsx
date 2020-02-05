@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import ManageProviderModal from "./ManageProviderModal";
 import { createMapStateToProps } from "../../store/common";
-import { componentActions } from "../../store/component";
+import { componentActions } from "../../store/organizationComponent";
 
 const mapStateToProps = createMapStateToProps(state => ({}));
 

@@ -12,3 +12,6 @@ update_configs:
       - match:
           dependency_name: "@patternfly/*"
           dependency_type: "direct"
+      - match:
+          dependency_name: "@redhat-cloud-services/*"
+          dependency_type: "direct"

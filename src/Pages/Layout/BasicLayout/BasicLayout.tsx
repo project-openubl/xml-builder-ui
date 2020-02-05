@@ -25,10 +25,11 @@ import { HelpIcon, HomeIcon } from "@patternfly/react-icons";
 import imgBrandNavBar from "../../../logo-navbar.svg";
 import { OrganizationRepresentation } from "../../../models/xml-builder";
 import brandImg from "../../../logo.png";
+import { isAppInSignerMode } from "../../../Utilities/EnvUtils";
 
 interface Props {
-  organizations: OrganizationRepresentation[];
-  selectedOrganization: OrganizationRepresentation | null;
+  contextOrganizations: OrganizationRepresentation[];
+  selectedContextOrganization: OrganizationRepresentation | null;
 }
 
 interface State {
@@ -108,7 +109,7 @@ class BasicLayout extends React.Component<Props, State> {
             <TextListItem component="dt">Rest API documentation</TextListItem>
             <TextListItem component="dd">
               <a
-                href="https://app.swaggerhub.com/apis-docs/project-openubl/xml-builder"
+                href="https://app.swaggerhub.com/organizations/project-openubl"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -169,13 +170,18 @@ class BasicLayout extends React.Component<Props, State> {
   };
 
   renderSidebar = () => {
-    const { organizations, selectedOrganization } = this.props;
+    const { contextOrganizations, selectedContextOrganization } = this.props;
+    const isSignerMode = isAppInSignerMode();
 
-    let org;
-    if (selectedOrganization) {
-      org = selectedOrganization;
-    } else if (organizations.length > 0) {
-      org = organizations[0];
+    let ctxOrganization;
+    if (isSignerMode) {
+      if (selectedContextOrganization) {
+        ctxOrganization = selectedContextOrganization;
+      } else if (contextOrganizations.length > 0) {
+        ctxOrganization = contextOrganizations[0];
+      } else {
+        throw new Error("No context organization found");
+      }
     }
 
     const PageNav = (
@@ -189,31 +195,40 @@ class BasicLayout extends React.Component<Props, State> {
           </NavItem>
         </NavGroup>
         <NavGroup title="Consola administración">
-          <NavItem key="organizations">
-            <NavLink to="/organizations/list" activeClassName="pf-m-current">
-              Organizaciones
-            </NavLink>
-          </NavItem>
+          {isSignerMode && (
+            <NavItem key="organizations">
+              <NavLink to="/organizations/list" activeClassName="pf-m-current">
+                Organizaciones
+              </NavLink>
+            </NavItem>
+          )}
+          {isSignerMode && ctxOrganization && (
+            <NavItem key="keys">
+              <NavLink
+                to={`/organizations/manage/${ctxOrganization.id}/keys`}
+                activeClassName="pf-m-current"
+              >
+                Certificados digitales
+              </NavLink>
+            </NavItem>
+          )}
+          {isSignerMode && ctxOrganization && (
+            <NavItem key="documents">
+              <NavLink
+                to={`/organizations/documents/${ctxOrganization.id}/create`}
+                activeClassName="pf-m-current"
+              >
+                Comprobantes electrónicos
+              </NavLink>
+            </NavItem>
+          )}
 
-          {org && (
-            <React.Fragment>
-              <NavItem key="keys">
-                <NavLink
-                  to={`/organizations/manage/${org.id}/keys`}
-                  activeClassName="pf-m-current"
-                >
-                  Certificados digitales
-                </NavLink>
-              </NavItem>
-              <NavItem key="documents">
-                <NavLink
-                  to={`/organizations/documents/${org.id}/create`}
-                  activeClassName="pf-m-current"
-                >
-                  Comprobantes electrónicos
-                </NavLink>
-              </NavItem>
-            </React.Fragment>
+          {!isSignerMode && (
+            <NavItem key="documents">
+              <NavLink to={`/documents/create`} activeClassName="pf-m-current">
+                Comprobantes electrónicos
+              </NavLink>
+            </NavItem>
           )}
         </NavGroup>
       </Nav>

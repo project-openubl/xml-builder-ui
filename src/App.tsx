@@ -5,25 +5,27 @@ import { AppRoutes } from "./Routes";
 import "./App.css";
 import "./App.scss";
 import BasicLayout from "./Pages/Layout/BasicLayout";
-import OrganizationContextLoader from "./SmartComponents/OrganizationContextLoader";
 import DeleteMessageDialog from "./SmartComponents/DeleteDialog";
+import XmlBuilderComponent from "./PresentationalComponents/XmlBuilderComponent";
+import OrganizationContextLoader from "./SmartComponents/OrganizationContextLoader";
 
-import '@redhat-cloud-services/frontend-components-notifications/index.css';
+import "@redhat-cloud-services/frontend-components-notifications/index.css";
 const frontendComponentsNotifications = require("@redhat-cloud-services/frontend-components-notifications");
 
 const App: React.FC = () => {
-  const NotificationsPortal = frontendComponentsNotifications.NotificationsPortal;
+  const NotificationsPortal =
+    frontendComponentsNotifications.NotificationsPortal;
 
   return (
     <React.Fragment>
       <HashRouter>
-        <OrganizationContextLoader>
+        <XmlBuilderComponent whenSignerComponent={OrganizationContextLoader}>
           <BasicLayout>
             <AppRoutes />
             <DeleteMessageDialog />
             <NotificationsPortal />
           </BasicLayout>
-        </OrganizationContextLoader>
+        </XmlBuilderComponent>
       </HashRouter>
     </React.Fragment>
   );

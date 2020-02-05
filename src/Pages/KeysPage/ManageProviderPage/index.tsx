@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import ManageProviderPage from "./ManageProviderPage";
 
 import { createMapStateToProps } from "../../../store/common";
-import { componentActions, componentSelectors } from "../../../store/component";
+import { componentActions, componentSelectors } from "../../../store/organizationComponent";
 import {
   serverInfoSelectors,
   serverInfoActions

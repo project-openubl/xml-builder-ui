@@ -2,7 +2,7 @@ import { AxiosError, AxiosResponse } from "axios";
 import { Dispatch } from "redux";
 import { createAction } from "typesafe-actions";
 import { OrganizationRepresentation } from "../../models/xml-builder";
-import { getAll } from "../../api/organizations";
+import { getAllOrganizations } from "../../api/organizations";
 import { alertFetchEndpoint } from "../alert/actions";
 
 export const fetchOrganizationsRequest = createAction(
@@ -23,7 +23,7 @@ export const fetchOrganizations = () => {
   return (dispatch: Dispatch) => {
     dispatch(fetchOrganizationsRequest());
 
-    return getAll()
+    return getAllOrganizations()
       .then((res: AxiosResponse<OrganizationRepresentation[]>) => {
         dispatch(fetchOrganizationsSuccess(res.data));
       })

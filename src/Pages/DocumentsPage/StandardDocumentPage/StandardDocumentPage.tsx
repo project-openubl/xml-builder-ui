@@ -5,6 +5,8 @@ import GenericDocument from "../../../SmartComponents/GenericDocument";
 import DocumentsPageTabs from "../../../PresentationalComponents/DocumentsPageTabs";
 import StandardDocumentForm from "../../../PresentationalComponents/StandardDocumentForm";
 import { StandardDocumentFormData } from "../../../PresentationalComponents/StandardDocumentForm/StandardDocumentForm";
+import GenericOrganizationDocument from "../../../SmartComponents/GenericOrganizationDocument";
+import { isAppInSignerMode } from "../../../Utilities/EnvUtils";
 
 interface StateToProps {}
 
@@ -89,15 +91,26 @@ class StandardDocumentPage extends React.Component<Props, State> {
       inputDocument = this.processFormAndGetInputDocument(form);
     }
 
+    const documentForm = <StandardDocumentForm onSubmit={this.onSubmit} />;
+
     return (
       <React.Fragment>
         <DocumentsPageTabs activeKey={0}>
-          <GenericDocument
-            documentType={documentType}
-            inputDocument={inputDocument}
-          >
-            <StandardDocumentForm onSubmit={this.onSubmit} />
-          </GenericDocument>
+          {isAppInSignerMode() ? (
+            <GenericOrganizationDocument
+              documentType={documentType}
+              inputDocument={inputDocument}
+            >
+              {documentForm}
+            </GenericOrganizationDocument>
+          ) : (
+            <GenericDocument
+              documentType={documentType}
+              inputDocument={inputDocument}
+            >
+              {documentForm}
+            </GenericDocument>
+          )}
         </DocumentsPageTabs>
       </React.Fragment>
     );

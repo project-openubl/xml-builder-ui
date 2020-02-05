@@ -11,7 +11,7 @@ import {
   serverInfoActions
 } from "../../../store/serverInfo";
 import { deleteDialogActions } from "../../../store/deleteDialog";
-import { componentActions } from "../../../store/component";
+import { componentActions } from "../../../store/organizationComponent";
 
 const mapStateToProps = createMapStateToProps((state, ownProps: any) => {
   const organizationId = ownProps.match.params.organizationId;

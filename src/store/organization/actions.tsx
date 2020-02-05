@@ -3,11 +3,11 @@ import { Dispatch } from "redux";
 import { createAction } from "typesafe-actions";
 import { OrganizationRepresentation } from "../../models/xml-builder";
 import {
-  getById,
-  create,
-  update,
-  getIdByName,
-  remove
+  getOrganizationById,
+  createOrganization,
+  updateOrganization,
+  getOrganizationIdByName,
+  removeOrganization
 } from "../../api/organizations";
 import { fetchOrganizations } from "../organizationContext/actions";
 import { alert, alertFetchEndpoint } from "../alert/actions";
@@ -78,7 +78,7 @@ export const fetchOrganization = (organizationId: string) => {
 
     dispatch(fetchOrganizationRequest(meta));
 
-    return getById(organizationId)
+    return getOrganizationById(organizationId)
       .then((res: AxiosResponse<OrganizationRepresentation>) => {
         dispatch(fetchOrganizationSuccess(res.data, meta));
       })
@@ -89,12 +89,12 @@ export const fetchOrganization = (organizationId: string) => {
   };
 };
 
-export const createOrganization = (
+export const requestCreateOrganization = (
   organization: OrganizationRepresentation
 ) => {
   return (dispatch: Dispatch) => {
     dispatch(createOrganizationRequest());
-    return create(organization)
+    return createOrganization(organization)
       .then((res: AxiosResponse<OrganizationRepresentation>) => {
         dispatch(createOrganizationSuccess(res.data));
         fetchOrganizations()(dispatch);
@@ -111,7 +111,7 @@ export const createOrganization = (
   };
 };
 
-export const updateOrganization = (
+export const requestUpdateOrganization = (
   organizationId: string,
   organization: OrganizationRepresentation
 ) => {
@@ -122,7 +122,7 @@ export const updateOrganization = (
 
     dispatch(updateOrganizationRequest(meta));
 
-    return update(organizationId, organization)
+    return updateOrganization(organizationId, organization)
       .then((res: AxiosResponse<OrganizationRepresentation>) => {
         dispatch(updateOrganizationSuccess(res.data, meta));
         fetchOrganizations()(dispatch);
@@ -147,7 +147,7 @@ export const deleteOrganization = (organizationId: string) => {
 
     dispatch(deleteOrganizationRequest(meta));
 
-    return remove(organizationId)
+    return removeOrganization(organizationId)
       .then((res: AxiosResponse) => {
         dispatch(deleteOrganizationSuccess(res.data, meta));
         fetchOrganizations()(dispatch);
@@ -174,7 +174,7 @@ export const fetchOrganizationIdByName = (organizationName: string) => {
 
     dispatch(fetchOrganizationIdByNameRequest(meta));
 
-    return getIdByName(organizationName)
+    return getOrganizationIdByName(organizationName)
       .then((res: AxiosResponse<string | null>) => {
         const data = res.data;
         dispatch(fetchOrganizationIdByNameSuccess(data, meta));

@@ -5,7 +5,7 @@ import {
   OrganizationRepresentation,
   SearchResultsRepresentation
 } from "../../models/xml-builder";
-import { search } from "../../api/organizations";
+import { searchOrganizations } from "../../api/organizations";
 import { alertFetchEndpoint } from "../alert/actions";
 
 export const {
@@ -26,7 +26,7 @@ export const fetchOrganizations = (
   return (dispatch: Dispatch) => {
     dispatch(fetchOrganizationListRequest());
 
-    return search(filterText, page, pageSize)
+    return searchOrganizations(filterText, page, pageSize)
       .then((res: AxiosResponse) => {
         dispatch(fetchOrganizationListSuccess(res.data));
       })

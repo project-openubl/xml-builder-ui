@@ -6,7 +6,6 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import configureStore from "./store";
 import { initApi } from "./api/apiInit";
-import '@patternfly/patternfly/patternfly-addons.css';
 
 initApi();
 

@@ -26,8 +26,8 @@ const mapStateToProps = createMapStateToProps((state, ownProps: any) => {
 
 const mapDispatchToProps = {
   fetchOrganization: organizationActions.fetchOrganization,
-  createOrganization: organizationActions.createOrganization,
-  updateOrganization: organizationActions.updateOrganization
+  createOrganization: organizationActions.requestCreateOrganization,
+  updateOrganization: organizationActions.requestUpdateOrganization
 };
 
 export default withRouter(

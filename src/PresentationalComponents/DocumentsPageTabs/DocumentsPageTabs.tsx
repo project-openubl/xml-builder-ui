@@ -11,6 +11,7 @@ import {
 import OrganizationContextSelector from "../../SmartComponents/OrganizationContextSelector";
 import { XmlBuilderRouterProps } from "../../models/routerProps";
 import { OrganizationRepresentation } from "../../models/xml-builder";
+import { isAppInSignerMode } from "../../Utilities/EnvUtils";
 
 interface Props extends XmlBuilderRouterProps {
   activeKey: number;
@@ -41,18 +42,22 @@ const DocumentsPageTabs: React.FC<Props> = ({
     history.push(`/organizations/documents/${organization.id}/create`);
   };
 
+  const isSignerMode = isAppInSignerMode();
+
   return (
     <React.Fragment>
       <PageSection variant={PageSectionVariants.light}>
-        <div style={{ marginBottom: 20 }}>
-          <div className="pf-c-form pf-m-horizontal">
-            <FormGroup label="Organización" fieldId="organizacion">
-              <OrganizationContextSelector
-                onSelect={onOrganizationContextSelect}
-              />
-            </FormGroup>
+        {isSignerMode && (
+          <div style={{ marginBottom: 20 }}>
+            <div className="pf-c-form pf-m-horizontal">
+              <FormGroup label="Organización" fieldId="organizacion">
+                <OrganizationContextSelector
+                  onSelect={onOrganizationContextSelect}
+                />
+              </FormGroup>
+            </div>
           </div>
-        </div>
+        )}
 
         <TextContent>
           <Text component="h1">Comprobantes electrónicos</Text>

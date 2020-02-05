@@ -6,7 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^4.8.2",
     "@material-ui/lab": "^4.0.0-alpha.38",
-    "@patternfly/patternfly": "^2.43.1",
+    "@patternfly/patternfly": "^2.57.0",
     "@patternfly/react-core": "3.129.3",
     "@patternfly/react-inline-edit-extension": "2.14.20",
     "@patternfly/react-table": "2.24.64",

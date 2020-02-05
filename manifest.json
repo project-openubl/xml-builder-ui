@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Project OpenUBL - Xml Builder UI",
+  "name": "Interfaz gráfica de XML Builder - Facturación electrónica",
   "icons": [
     {
       "src": "favicon.ico",

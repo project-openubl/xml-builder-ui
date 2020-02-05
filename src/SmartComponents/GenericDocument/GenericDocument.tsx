@@ -87,19 +87,10 @@ class GenericDocument extends React.Component<Props, State> {
 
 
   render() {
-    const a = () => {
-      this.refresh();
-    };
-
-    console.log("renderrrrrrrrr");
-
     const { children, inputDocument } = this.props;
     const { xml, xmlFilename, enrichedData } = this.state;
     return (
       <React.Fragment>
-        <button type="button" onClick={a}>
-          carlos3333
-        </button>
         <Grid lg={2} gutter="sm">
           <GridItem span={8}>
             <SplitItem>

@@ -30,15 +30,8 @@ stages:
     jobs:
       - job: unit_tests
         displayName: Unit tests
-        strategy:
-          maxParallel: 2
-          matrix:
-            linux:
-              imageName: 'ubuntu-16.04'
-            windows:
-              imageName: 'vs2017-win2016'
         pool:
-          vmImage: $(imageName)
+          vmImage: ubuntu-16.04
         steps:
           - task: NodeTool@0
             inputs:

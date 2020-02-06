@@ -39,7 +39,7 @@ stages:
             displayName: 'Install Node.js'
           - script: |
               yarn install
-              yarn test
+              yarn test --watchAll=false
             displayName: 'yarn install and test'
   - stage: build
     displayName: Build
@@ -66,5 +66,5 @@ stages:
             displayName: 'yarn install and build'
           - script: |
               yarn install
-              yarn build
+              yarn build:signer
             displayName: 'yarn install and build:signer'

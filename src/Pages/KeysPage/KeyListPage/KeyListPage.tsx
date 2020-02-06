@@ -247,7 +247,7 @@ class KeyListPage extends React.Component<Props, State> {
       const retry = () => {
         this.loadKeysAndComponents();
       };
-      return <ErrorTable columns={columns} retry={retry} />;
+      return <ErrorTable columns={columns} retryAction={retry} />;
     }
 
     if (rows.length === 0) {

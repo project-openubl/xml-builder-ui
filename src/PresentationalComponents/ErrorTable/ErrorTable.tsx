@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, TableHeader, TableBody } from "@patternfly/react-table";
+import { Table, TableHeader, TableBody, ICell } from "@patternfly/react-table";
 import { ErrorCircleOIcon } from "@patternfly/react-icons";
 import {
   Card,
@@ -14,8 +14,8 @@ import {
 } from "@patternfly/react-core";
 
 export interface Props {
-  columns: any[];
-  retry: any;
+  columns: (ICell | string)[];
+  retryAction: (event?: any) => void;
 }
 
 export interface State {}
@@ -34,12 +34,17 @@ class ErrorTable extends React.Component<Props, State> {
               <EmptyState>
                 <EmptyStateIcon icon={ErrorCircleOIcon} />
                 <Title headingLevel="h5" size="lg">
-                  An error occured while fetching data!
+                  ¡Ocurrió un error durante la extracción de datos!.
                 </Title>
-                <EmptyStateBody>Try again or reload the page.</EmptyStateBody>
+                <EmptyStateBody>
+                  Intente de nuevo o refresque la página.
+                </EmptyStateBody>
                 <EmptyStateSecondaryActions>
-                  <Button variant="link" onClick={this.props.retry}>
-                    Try again
+                  <Button
+                    variant="link"
+                    onClick={this.props.retryAction}
+                  >
+                    Intentar de nuevo
                   </Button>
                 </EmptyStateSecondaryActions>
               </EmptyState>

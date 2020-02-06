@@ -241,7 +241,7 @@ class OrganizationListPage extends React.Component<Props, State> {
       const retry = () => {
         this.refreshData();
       };
-      return <ErrorTable columns={columns} retry={retry} />;
+      return <ErrorTable columns={columns} retryAction={retry} />;
     }
 
     if (rows.length === 0) {

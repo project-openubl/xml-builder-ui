@@ -7,7 +7,7 @@ jobs:
   include:
   - stage: Test
     script:
-      - yarn test -- --coverage && npx codecov
+      - yarn test --watchAll=false -- --coverage && npx codecov
   - stage: GithubPage
     script:
       - yarn build

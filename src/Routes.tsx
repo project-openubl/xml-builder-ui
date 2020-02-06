@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import NotFound403 from "./Pages/Layout/Forbidden403";
-import NotFound404 from "./Pages/Layout/NotFound404";
-import ServiceUnavailable503 from "./Pages/Layout/ServiceUnavailable503";
-import HomePage from "./Pages/HomePage";
-import KeysPage from "./Pages/KeysPage";
-import OrganizationListPage from "./Pages/OrganizationListPage";
-import OrganizationPage from "./Pages/OrganizationPage";
-import DocumentsPage from "./Pages/DocumentsPage";
+import NotFound403 from "./PresentationalComponents/Pages/Forbidden403";
+import NotFound404 from "./PresentationalComponents/Pages/NotFound404";
+import ServiceUnavailable503 from "./PresentationalComponents/Pages/ServiceUnavailable503";
+import HomePage from "./PresentationalComponents/Pages/HomePage";
+import KeysPage from "./PresentationalComponents/Pages/KeysPage";
+import OrganizationListPage from "./PresentationalComponents/Pages/OrganizationListPage";
+import OrganizationPage from "./PresentationalComponents/Pages/OrganizationPage";
+import DocumentsPage from "./PresentationalComponents/Pages/DocumentsPage";
 import { isAppInSignerMode } from "./Utilities/EnvUtils";
 
 const XmlBuilderRoute = (params: any) => {

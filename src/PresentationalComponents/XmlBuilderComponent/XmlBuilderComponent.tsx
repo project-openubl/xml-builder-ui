@@ -2,8 +2,8 @@ import React from "react";
 import { isAppInSignerMode } from "../../Utilities/EnvUtils";
 
 interface Props {
-  whenSignerComponent: any;
-  elseComponent?: any;
+  whenSignerMode: React.ComponentType<any>;
+  elseMode?: React.ComponentType<any>;
 }
 
 interface State {}
@@ -12,13 +12,12 @@ class XmlBuilderComponent extends React.Component<Props, State> {
   render() {
     const {
       children,
-      whenSignerComponent: SignerComponent,
-      elseComponent: NoSignerComponent,
-      ...rest
+      whenSignerMode: SignerComponent,
+      elseMode: NoSignerComponent
     } = this.props;
 
     if (isAppInSignerMode()) {
-      return <SignerComponent {...rest}>{children}</SignerComponent>;
+      return <SignerComponent>{children}</SignerComponent>;
     } else {
       if (NoSignerComponent) {
         return <NoSignerComponent>{children}</NoSignerComponent>;

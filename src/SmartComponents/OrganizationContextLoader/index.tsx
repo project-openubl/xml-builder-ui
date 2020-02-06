@@ -16,4 +16,7 @@ const mapDispatchToProps = {
   fetchOrganizations: organizationContextActions.fetchOrganizations
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrganizationContextLoader);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(OrganizationContextLoader);

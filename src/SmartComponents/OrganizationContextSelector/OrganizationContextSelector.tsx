@@ -1,20 +1,17 @@
 import React from "react";
-import { AxiosError } from "axios";
 import { ContextSelector, ContextSelectorItem } from "@patternfly/react-core";
 import { OrganizationRepresentation } from "../../models/xml-builder";
-import { FetchStatus } from "../../store/common";
-import { XmlBuilderRouterProps } from "../../models/routerProps";
 
 interface StateToProps {
-  selectedOrganization: OrganizationRepresentation | null;
-  organizations: OrganizationRepresentation[];
-  error: AxiosError<any> | null;
-  status: FetchStatus | null;
+  ctxOrganization: OrganizationRepresentation | null;
+  ctxOrganizations: OrganizationRepresentation[];
 }
 
-interface DispatchToProps {}
+interface DispatchToProps {
+  selectCtxOrganization: (organization: OrganizationRepresentation) => any;
+}
 
-interface Props extends StateToProps, DispatchToProps, XmlBuilderRouterProps {
+interface Props extends StateToProps, DispatchToProps {
   onSelect: (organization: OrganizationRepresentation) => any;
 }
 
@@ -30,7 +27,7 @@ class OrganizationContextSelector extends React.Component<Props, State> {
     this.state = {
       isOpen: false,
       searchValue: "",
-      filteredItems: props.organizations
+      filteredItems: props.ctxOrganizations
     };
   }
 
@@ -41,12 +38,13 @@ class OrganizationContextSelector extends React.Component<Props, State> {
     });
   };
 
-  onSelect = (event: any, value: any) => {
-    const { organizations, onSelect } = this.props;
+  onContextSelect = (event: any, value: any) => {
+    const { ctxOrganizations, selectCtxOrganization, onSelect } = this.props;
 
-    const organization = organizations.find(p => p.name === value);
+    const organization = ctxOrganizations.find(p => p.name === value);
     if (organization) {
       this.setState({ isOpen: !this.state.isOpen }, () => {
+        selectCtxOrganization(organization);
         onSelect(organization);
       });
     }
@@ -59,8 +57,8 @@ class OrganizationContextSelector extends React.Component<Props, State> {
   onSearchButtonClick = (event: any) => {
     const filtered: OrganizationRepresentation[] =
       this.state.searchValue.trim() === ""
-        ? this.props.organizations
-        : this.props.organizations.filter(
+        ? this.props.ctxOrganizations
+        : this.props.ctxOrganizations.filter(
             (org: OrganizationRepresentation) =>
               org.name
                 .toLowerCase()
@@ -71,16 +69,16 @@ class OrganizationContextSelector extends React.Component<Props, State> {
   };
 
   render() {
-    const { selectedOrganization } = this.props;
+    const { ctxOrganization } = this.props;
     const { isOpen, searchValue, filteredItems } = this.state;
     return (
       <ContextSelector
-        toggleText={selectedOrganization ? selectedOrganization.name : ""}
+        toggleText={ctxOrganization ? ctxOrganization.name : ""}
         onSearchInputChange={this.onSearchInputChange}
         isOpen={isOpen}
         searchInputValue={searchValue}
         onToggle={this.onToggle}
-        onSelect={this.onSelect}
+        onSelect={this.onContextSelect}
         onSearchButtonClick={this.onSearchButtonClick}
         screenReaderLabel="Selected organization:"
       >

@@ -3,7 +3,6 @@ import { Dispatch } from "redux";
 import { createAction } from "typesafe-actions";
 import { OrganizationRepresentation } from "../../models/xml-builder";
 import { getAllOrganizations } from "../../api/organizations";
-import { alertFetchEndpoint } from "../alert/actions";
 
 export const fetchOrganizationsRequest = createAction(
   "organizationContext/organizations/fetch/request"
@@ -29,7 +28,6 @@ export const fetchOrganizations = () => {
       })
       .catch((err: AxiosError) => {
         dispatch(fetchOrganizationsFailure(err));
-        alertFetchEndpoint(err)(dispatch);
       });
   };
 };

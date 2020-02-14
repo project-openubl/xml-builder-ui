@@ -1,65 +1,47 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import NotFound403 from "./PresentationalComponents/Pages/Forbidden403";
-import NotFound404 from "./PresentationalComponents/Pages/NotFound404";
-import ServiceUnavailable503 from "./PresentationalComponents/Pages/ServiceUnavailable503";
-import HomePage from "./PresentationalComponents/Pages/HomePage";
-import KeysPage from "./PresentationalComponents/Pages/KeysPage";
-import OrganizationListPage from "./PresentationalComponents/Pages/OrganizationListPage";
-import OrganizationPage from "./PresentationalComponents/Pages/OrganizationPage";
-import DocumentsPage from "./PresentationalComponents/Pages/DocumentsPage";
-import { isAppInSignerMode } from "./Utilities/EnvUtils";
+import {
+  PageHome,
+  PageForbidden403,
+  PageNotFound404,
+  PageServiceUnavailable503
+} from "xml-builder-react";
+import RouterOrganizationContextLoader from "./SmartComponents/RouterOrganizationContextLoader";
+import { PageOrganizationList } from "./PresentationalComponents/PageOrganizationList";
+import { PageOrganizationEdit } from "./PresentationalComponents/PageOrganizationEdit";
+import { PageContextOrganization } from "./PresentationalComponents/PageContextOrganization";
 
 const XmlBuilderRoute = (params: any) => {
-  const { component: Component, forSignerMode, ...rest } = params;
-  if (isAppInSignerMode() === forSignerMode) {
-    return <Route {...rest} component={Component} />;
-  }
-  return null;
+  const { component: Component, ...rest } = params;
+  return <RouterOrganizationContextLoader {...rest} component={Component} />;
 };
 
 export const AppRoutes = () => {
   return (
     <Switch>
-      <Route path="/home" component={HomePage} />
-
       <XmlBuilderRoute
-        path="/documents/create"
-        component={DocumentsPage}
-        exact
-        forSignerMode={false}
+        path="/home"
+        render={() => (
+          <PageHome welcomeMessage="Bienvenido a XML Builder Signer" />
+        )}
       />
 
       <XmlBuilderRoute
         path="/organizations/list"
-        component={OrganizationListPage}
-        forSignerMode={true}
+        component={PageOrganizationList}
       />
       <XmlBuilderRoute
         path="/organizations/create"
-        component={OrganizationPage}
-        forSignerMode={true}
+        component={PageOrganizationEdit}
       />
       <XmlBuilderRoute
-        path="/organizations/edit/:organizationId"
-        component={OrganizationPage}
-        forSignerMode={true}
-      />
-      <XmlBuilderRoute
-        path="/organizations/manage/:organizationId/keys"
-        component={KeysPage}
-        forSignerMode={true}
-      />
-      <XmlBuilderRoute
-        path="/organizations/documents/:organizationId/create"
-        component={DocumentsPage}
-        forSignerMode={true}
+        path="/organizations/manage/:organizationId"
+        component={PageContextOrganization}
       />
 
-      <Route path="/error/403" component={NotFound403} />
-      <Route path="/error/404" component={NotFound404} />
-      <Route path="/error/503" component={ServiceUnavailable503} />
-
+      <Route path="/error403" component={PageForbidden403} />
+      <Route path="/error404" component={PageNotFound404} />
+      <Route path="/error503" component={PageServiceUnavailable503} />
       <Route path="/" render={() => <Redirect to={"/home"} />} />
     </Switch>
   );

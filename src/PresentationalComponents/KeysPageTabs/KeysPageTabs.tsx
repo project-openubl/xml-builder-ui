@@ -10,14 +10,13 @@ import {
 } from "@patternfly/react-core";
 import OrganizationContextSelector from "../../SmartComponents/OrganizationContextSelector";
 import { OrganizationRepresentation } from "../../models/xml-builder";
+import { XmlBuilderRouterProps } from "../../models/routerProps";
 
-interface Props {
-  match: any;
-  history: any;
-  location: any;
+interface Props extends XmlBuilderRouterProps {
   activeKey: number;
 }
-const KeysPageTabs: React.FC<Props> = ({
+
+export const KeysPageTabs: React.FC<Props> = ({
   match,
   history,
   activeKey,
@@ -75,5 +74,3 @@ const KeysPageTabs: React.FC<Props> = ({
     </React.Fragment>
   );
 };
-
-export default KeysPageTabs;

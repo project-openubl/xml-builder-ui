@@ -8,7 +8,7 @@ import "./App.scss";
 import { LayoutBasicProject } from "xml-builder-react";
 
 import DeleteMessageDialog from "./SmartComponents/DeleteDialog";
-import SidebarNav from "./SmartComponents/SidebarNav";
+import { SidebarNav } from "./PresentationalComponents/SidebarNav";
 
 import "@redhat-cloud-services/frontend-components-notifications/index.css";
 const frontendComponentsNotifications = require("@redhat-cloud-services/frontend-components-notifications");
@@ -22,8 +22,8 @@ const App: React.FC = () => {
       <HashRouter>
         <LayoutBasicProject
           version="1.0.0.Final"
-          productName="XML Builder Signer"
-          swaggerApiURL="https://app.swaggerhub.com/apis-docs/project-openubl/xml-builder-signer"
+          productName="XML Builder"
+          swaggerApiURL="https://app.swaggerhub.com/apis-docs/project-openubl/xml-builder"
           githubIssuesURL="https://github.com/project-openubl/xml-builder/issues"
           documentationURL="https://project-openubl.gitbook.io/xml-builder/"
           githubSourceCodeURL="https://github.com/project-openubl/xml-builder"

@@ -40,10 +40,8 @@
     "yup": "^0.28.0"
   },
   "scripts": {
-    "start": "REACT_APP_SIGNER_MODE=false react-scripts start",
-    "start:signer": "REACT_APP_SIGNER_MODE=true react-scripts start",
-    "build": "REACT_APP_SIGNER_MODE=false react-scripts build",
-    "build:signer": "REACT_APP_SIGNER_MODE=true react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -6,38 +6,18 @@ import {
   PageNotFound404,
   PageServiceUnavailable503
 } from "xml-builder-react";
-import RouterOrganizationContextLoader from "./SmartComponents/RouterOrganizationContextLoader";
-import { PageOrganizationList } from "./PresentationalComponents/PageOrganizationList";
-import { PageOrganizationEdit } from "./PresentationalComponents/PageOrganizationEdit";
-import { PageContextOrganization } from "./PresentationalComponents/PageContextOrganization";
 
-const XmlBuilderRoute = (params: any) => {
-  const { component: Component, ...rest } = params;
-  return <RouterOrganizationContextLoader {...rest} component={Component} />;
-};
+import { PageDocuments } from "./PresentationalComponents/PageDocuments";
 
 export const AppRoutes = () => {
   return (
     <Switch>
-      <XmlBuilderRoute
+      <Route
         path="/home"
-        render={() => (
-          <PageHome welcomeMessage="Bienvenido a XML Builder Signer" />
-        )}
+        render={() => <PageHome welcomeMessage="Bienvenido a XML Builder" />}
       />
 
-      <XmlBuilderRoute
-        path="/organizations/list"
-        component={PageOrganizationList}
-      />
-      <XmlBuilderRoute
-        path="/organizations/create"
-        component={PageOrganizationEdit}
-      />
-      <XmlBuilderRoute
-        path="/organizations/manage/:organizationId"
-        component={PageContextOrganization}
-      />
+      <Route path="/documents" component={PageDocuments} />
 
       <Route path="/error403" component={PageForbidden403} />
       <Route path="/error404" component={PageNotFound404} />

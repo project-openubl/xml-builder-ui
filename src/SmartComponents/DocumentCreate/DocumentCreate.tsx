@@ -21,20 +21,17 @@ import { extractFilenameFromContentDispositionHeaderValue } from "../../Utilitie
 interface StateToProps {}
 
 interface DispatchToProps {
-  requestEnrichOrganizationDocument: (
-    organizationId: string,
+  requestEnrichDocument: (
     documentType: DocumentType,
     document: any
   ) => Promise<any>;
-  requestCreateOrganizationDocument: (
-    organizationId: string,
+  requestCreateDocument: (
     documentType: DocumentType,
     document: any
   ) => Promise<any>;
 }
 
 interface Props extends StateToProps, DispatchToProps, XmlBuilderRouterProps {
-  organizationId: string;
   formType: string;
 }
 
@@ -58,33 +55,29 @@ class DocumentCreate extends React.Component<Props, State> {
   }
 
   createDocument = (documentType: DocumentType, input: any) => {
-    const { requestCreateOrganizationDocument, organizationId } = this.props;
+    const { requestCreateDocument } = this.props;
 
-    requestCreateOrganizationDocument(organizationId, documentType, input).then(
-      (response: any) => {
-        if (response) {
-          const fileName = extractFilenameFromContentDispositionHeaderValue(
-            response.headers
-          );
-          this.setState({
-            responseXMLOutput: {
-              xml: response.data,
-              filename: fileName
-            }
-          });
-        }
+    requestCreateDocument(documentType, input).then((response: any) => {
+      if (response) {
+        const fileName = extractFilenameFromContentDispositionHeaderValue(
+          response.headers
+        );
+        this.setState({
+          responseXMLOutput: {
+            xml: response.data,
+            filename: fileName
+          }
+        });
       }
-    );
+    });
   };
 
   enrichDocument = (documentType: DocumentType, input: any) => {
-    const { requestEnrichOrganizationDocument, organizationId } = this.props;
+    const { requestEnrichDocument } = this.props;
 
-    requestEnrichOrganizationDocument(organizationId, documentType, input).then(
-      (response: any) => {
-        this.setState({ responseEnrichedOutput: response });
-      }
-    );
+    requestEnrichDocument(documentType, input).then((response: any) => {
+      this.setState({ responseEnrichedOutput: response });
+    });
   };
 
   handleFormStandardDocumentSubmit = (

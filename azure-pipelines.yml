@@ -66,5 +66,5 @@ stages:
             displayName: 'yarn install and build'
           - script: |
               yarn install
-              yarn build:signer
-            displayName: 'yarn install and build:signer'
+              yarn build
+            displayName: 'yarn install and build'

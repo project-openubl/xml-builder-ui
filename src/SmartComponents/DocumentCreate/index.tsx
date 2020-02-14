@@ -1,16 +1,14 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { organizationDocumentActions } from "../../store/organizationDocument";
+import { documentActions } from "../../store/document";
 import { createMapStateToProps } from "../../store/common";
 import DocumentCreate from "./DocumentCreate";
 
 const mapStateToProps = createMapStateToProps(state => ({}));
 
 const mapDispatchToProps = {
-  requestEnrichOrganizationDocument:
-    organizationDocumentActions.requestEnrichOrganizationDocument,
-  requestCreateOrganizationDocument:
-    organizationDocumentActions.requestCreateOrganizationDocument
+  requestEnrichDocument: documentActions.requestEnrichDocument,
+  requestCreateDocument: documentActions.requestCreateDocument
 };
 
 export default withRouter(

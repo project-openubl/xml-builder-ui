@@ -1,11 +1,11 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, Link } from "react-router-dom";
 import {
   PageHome,
   PageForbidden403,
   PageNotFound404,
   PageServiceUnavailable503
-} from "xml-builder-react";
+} from "@projectopenubl/xml-builder-react";
 
 import { PageDocuments } from "./PresentationalComponents/PageDocuments";
 
@@ -14,7 +14,16 @@ export const AppRoutes = () => {
     <Switch>
       <Route
         path="/home"
-        render={() => <PageHome welcomeMessage="Bienvenido a XML Builder" />}
+        render={() => (
+          <PageHome
+            welcomeMessage="Bienvenido a XML Builder"
+            buttonAdministrarServidor={
+              <Link to="/documents" className="pf-c-button pf-m-primary">
+                Administrar
+              </Link>
+            }
+          />
+        )}
       />
 
       <Route path="/documents" component={PageDocuments} />

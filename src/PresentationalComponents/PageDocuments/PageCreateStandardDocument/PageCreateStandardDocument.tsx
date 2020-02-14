@@ -1,5 +1,5 @@
 import React from "react";
-import { TabsDocument } from "xml-builder-react";
+import { TabsDocument } from "@projectopenubl/xml-builder-react";
 import { XmlBuilderRouterProps } from "../../../models/routerProps";
 import DocumentCreate from "../../../SmartComponents/DocumentCreate";
 

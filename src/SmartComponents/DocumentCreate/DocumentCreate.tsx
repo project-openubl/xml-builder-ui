@@ -13,7 +13,7 @@ import {
   StandardDocumentFormData,
   FormVoidedDocument,
   FormVoidedDocumentData
-} from "xml-builder-react";
+} from "@projectopenubl/xml-builder-react";
 import { DocumentType } from "../../models/xml-builder";
 import { XmlBuilderRouterProps } from "../../models/routerProps";
 import { extractFilenameFromContentDispositionHeaderValue } from "../../Utilities/Utils";

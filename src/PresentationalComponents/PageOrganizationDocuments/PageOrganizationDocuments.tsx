@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { XmlBuilderRouterProps } from "../../models/routerProps";
 import { PageCreateStandardDocument } from "./PageCreateStandardDocument";
 import { BajaDocumentPage } from "./PageCreateVoidedDocument";

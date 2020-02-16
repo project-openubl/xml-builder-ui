@@ -15,3 +15,6 @@ update_configs:
       - match:
           dependency_name: "@redhat-cloud-services/*"
           dependency_type: "direct"
+      - match:
+        dependency_name: "@projectopenubl/*"
+        dependency_type: "direct"

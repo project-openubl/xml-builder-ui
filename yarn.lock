@@ -2180,10 +2180,10 @@
   resolved "https://registry.yarnpkg.com/@patternfly/react-tokens/-/react-tokens-2.7.25.tgz#69b517f635721bedcefa6b4535688a11586be115"
   integrity sha512-04hRDWt07pyjLUO1VN9QbrPpQMJzjd+nQYp8vgoe6+mYBzw+D4banJeudZ1oTFii9hWV+mLEu6aiwPtTigPM1Q==
 
-"@projectopenubl/xml-builder-react@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@projectopenubl/xml-builder-react/-/xml-builder-react-0.1.4.tgz#8124d95512be176b515ed96072ade4e0f4b43ba7"
-  integrity sha512-jg4/UeTUFR2MI59wXDAwPHPaa3U2AfdMkWgB5NSt7mzqYEdjkQYd8qJknXsteUwNJ+kdGYZmDxEUZ0S9kDddKg==
+"@projectopenubl/xml-builder-react@0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@projectopenubl/xml-builder-react/-/xml-builder-react-0.1.6.tgz#3d005f017bbfc87b9fda37b24528761322b0c221"
+  integrity sha512-tou8ogFRhn69JiQEPr4+TF2P0Gz9KGlte0c6I9c4auNgvM60UTCod3AmATHTcCB4i4tSGwt6RzGdx4MOLFdcKQ==
   dependencies:
     "@testing-library/jest-dom" "^4.2.4"
     "@testing-library/react" "^9.3.2"

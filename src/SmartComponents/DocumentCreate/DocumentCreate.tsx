@@ -12,7 +12,9 @@ import {
   DocumentRequestResponseViewer,
   StandardDocumentFormData,
   FormVoidedDocument,
-  FormVoidedDocumentData
+  FormVoidedDocumentData,
+  FormSummaryDocument,
+  FormSummaryDocumentData
 } from "@projectopenubl/xml-builder-react";
 import { DocumentType } from "../../models/xml-builder";
 import { XmlBuilderRouterProps } from "../../models/routerProps";
@@ -102,6 +104,17 @@ class DocumentCreate extends React.Component<Props, State> {
     });
   };
 
+  handleFormSummaryDocumentSubmit = (
+    form: FormSummaryDocumentData,
+    input: any
+  ) => {
+    this.setState({ requestInput: input }, () => {
+      let documentType: DocumentType = "summary-document";
+      this.createDocument(documentType, input);
+      this.enrichDocument(documentType, input);
+    });
+  };
+
   render() {
     const { formType } = this.props;
     const {
@@ -122,6 +135,13 @@ class DocumentCreate extends React.Component<Props, State> {
       case "voided-document":
         form = (
           <FormVoidedDocument onSubmit={this.handleFormVoidedDocumentSubmit} />
+        );
+        break;
+      case "summary-document":
+        form = (
+          <FormSummaryDocument
+            onSubmit={this.handleFormSummaryDocumentSubmit}
+          />
         );
         break;
       default:

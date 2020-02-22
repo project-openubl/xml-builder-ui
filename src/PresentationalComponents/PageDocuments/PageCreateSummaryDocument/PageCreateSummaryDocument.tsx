@@ -8,7 +8,7 @@ interface Props extends XmlBuilderRouterProps {}
 
 interface State {}
 
-export class PageCreateVoidedDocument extends React.Component<Props, State> {
+export class PageCreateSummaryDocument extends React.Component<Props, State> {
   handleOnTabSelect = (
     event: React.MouseEvent<HTMLElement, MouseEvent>,
     eventKey: number | string
@@ -20,8 +20,8 @@ export class PageCreateVoidedDocument extends React.Component<Props, State> {
   render() {
     return (
       <React.Fragment>
-        <TabsDocument activeKey={1} onTabSelect={this.handleOnTabSelect}>
-          <DocumentCreate formType="voided-document" />
+        <TabsDocument activeKey={2} onTabSelect={this.handleOnTabSelect}>
+          <DocumentCreate formType="summary-document" />
         </TabsDocument>
       </React.Fragment>
     );

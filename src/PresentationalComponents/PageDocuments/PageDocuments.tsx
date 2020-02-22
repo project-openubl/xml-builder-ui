@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { XmlBuilderRouterProps } from "../../models/routerProps";
 import { PageCreateStandardDocument } from "./PageCreateStandardDocument";
 import { PageCreateVoidedDocument } from "./PageCreateVoidedDocument";
+import { PageCreateSummaryDocument } from "./PageCreateSummaryDocument";
 
 interface StateToProps {}
 
@@ -27,6 +28,11 @@ export const PageDocuments: React.FC<Props> = ({ match }) => {
         <Route
           path={`${match.path}/create/voided-document`}
           component={PageCreateVoidedDocument}
+          exact={true}
+        />
+        <Route
+          path={`${match.path}/create/summary-document`}
+          component={PageCreateSummaryDocument}
           exact={true}
         />
       </Switch>

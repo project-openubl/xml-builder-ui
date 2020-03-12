@@ -8,7 +8,7 @@
     "@material-ui/lab": "^4.0.0-alpha.38",
     "@patternfly/patternfly": "^2.57.2",
     "@patternfly/react-core": "3.134.2",
-    "@patternfly/react-inline-edit-extension": "2.15.6",
+    "@patternfly/react-inline-edit-extension": "2.17.29",
     "@patternfly/react-table": "2.25.6",
     "@projectopenubl/xml-builder-react": "^0.1.4",
     "@redhat-cloud-services/frontend-components-notifications": "^0.0.7",

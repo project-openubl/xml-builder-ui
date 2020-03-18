@@ -2101,10 +2101,10 @@
   resolved "https://registry.yarnpkg.com/@patternfly/patternfly/-/patternfly-2.56.3.tgz#ca70eec632863f4ab62dada040f0979998a1355b"
   integrity sha512-merUreEz4ul84s+OXwJ27AtMtcBdzExDX+Xn/T84OD6OAgG8iU1x1dnWdFBeEFKOlTpKxwjXxS/Zc8tSxpfRBw==
 
-"@patternfly/patternfly@^2.57.2":
-  version "2.57.2"
-  resolved "https://registry.yarnpkg.com/@patternfly/patternfly/-/patternfly-2.57.2.tgz#ea7b4f4056e4e1334460786873a612df88543c9b"
-  integrity sha512-BXdJILzbz9e3nsBKJkpHz3vmlw1tWG0VaLmmgiOSA8yHC1GGECfYpPXJx3yy1T4RSw3H3QVB3Wx6Swp4ML8IAg==
+"@patternfly/patternfly@^2.69.1":
+  version "2.69.1"
+  resolved "https://registry.yarnpkg.com/@patternfly/patternfly/-/patternfly-2.69.1.tgz#4556a64ef3b44aa87c5a8f029310c1e91ab632f2"
+  integrity sha512-HGskqLk792aeBLbfXD4olXvBsSqEaZgr7ka/pf3bnlCnFuDgmA4vUvETXIYDhpn2jY26KuyPIU5+JV3Pq6O9cw==
 
 "@patternfly/react-core@3.134.2", "@patternfly/react-core@^3.134.2":
   version "3.134.2"

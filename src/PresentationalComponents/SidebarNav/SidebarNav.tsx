@@ -20,9 +20,14 @@ export class SidebarNav extends React.Component<Props, State> {
           </NavItem>
         </NavGroup>
         <NavGroup title="Consola administración">
-          <NavItem key="documents">
+          {/* <NavItem>
             <NavLink to={`/documents`} activeClassName="pf-m-current">
               Comprobantes electrónicos
+            </NavLink>
+          </NavItem> */}
+          <NavItem>
+            <NavLink to={`/swagger-ui`} activeClassName="pf-m-current">
+              API
             </NavLink>
           </NavItem>
         </NavGroup>

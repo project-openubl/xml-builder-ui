@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Nav, NavItem, NavGroup } from "@patternfly/react-core";
-import { HomeIcon } from "@patternfly/react-icons";
+import { HomeIcon, BookOpenIcon } from "@patternfly/react-icons";
 
 interface Props {}
 
@@ -18,19 +18,20 @@ export class SidebarNav extends React.Component<Props, State> {
               &nbsp;Home
             </NavLink>
           </NavItem>
-        </NavGroup>
-        <NavGroup title="Consola administración">
-          {/* <NavItem>
-            <NavLink to={`/documents`} activeClassName="pf-m-current">
-              Comprobantes electrónicos
-            </NavLink>
-          </NavItem> */}
           <NavItem>
-            <NavLink to={`/swagger-ui`} activeClassName="pf-m-current">
-              API
+            <NavLink to="/swagger-ui" activeClassName="pf-m-current">
+              <BookOpenIcon />
+              &nbsp;API Docs
             </NavLink>
           </NavItem>
         </NavGroup>
+        {/* <NavGroup title="Consola administración">
+          <NavItem>
+            <NavLink to={`/documents`} activeClassName="pf-m-current">
+              Comprobantes electrónicos
+            </NavLink>
+          </NavItem>
+        </NavGroup> */}
       </Nav>
     );
   }

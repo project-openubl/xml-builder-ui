@@ -1,0 +1,1 @@
+{"version":3,"sources":["IframeComponent.scss","DeleteDialog.scss"],"names":[],"mappings":"AAAA,4BACE,WAAY,CCDd,mDACI,2BAA6B","file":"main.90ce2cf2.chunk.css","sourcesContent":[".IframeComponent_fullheight {\n  height: 100%;\n}\n",".pf-c-modal-box__footer > .pf-c-button:first-of-type {\n    margin-left: unset !important;\n}"]}

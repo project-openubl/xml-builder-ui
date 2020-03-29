@@ -7,7 +7,8 @@ import {
   PageServiceUnavailable503
 } from "@projectopenubl/xml-builder-react";
 
-import { PageDocuments } from "./PresentationalComponents/PageDocuments";
+// import { PageDocuments } from "./PresentationalComponents/PageDocuments";
+import { PageSwaggerUI } from "./PresentationalComponents/PageSwaggerUI";
 
 export const AppRoutes = () => {
   return (
@@ -18,7 +19,7 @@ export const AppRoutes = () => {
           <PageHome
             welcomeMessage="Bienvenido a XML Builder"
             buttonAdministrarServidor={
-              <Link to="/documents" className="pf-c-button pf-m-primary">
+              <Link to="/swagger-ui" className="pf-c-button pf-m-primary">
                 Administrar
               </Link>
             }
@@ -26,7 +27,8 @@ export const AppRoutes = () => {
         )}
       />
 
-      <Route path="/documents" component={PageDocuments} />
+      {/* <Route path="/documents" component={PageDocuments} /> */}
+      <Route path="/swagger-ui" component={PageSwaggerUI} />
 
       <Route path="/error403" component={PageForbidden403} />
       <Route path="/error404" component={PageNotFound404} />

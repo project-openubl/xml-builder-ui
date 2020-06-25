@@ -22,7 +22,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "jest-enzyme": "^7.1.2",
     "react": "16.13.1",
-    "react-ace": "^8.0.0",
+    "react-ace": "^9.1.0",
     "react-dom": "16.13.1",
     "react-hook-form": "5.2.0",
     "react-json-view": "^1.19.1",
